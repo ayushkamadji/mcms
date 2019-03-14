@@ -1,12 +1,10 @@
 const App = require('../../lib/app/app')
+const HelloAppWeb = require('./web')
 
 class HelloApp extends App {
-  constructor(path) {
+  constructor(path, Router) {
     super(path, "hello")
-  }
-
-  run(req, res) {
-    res.send("HELLO APP")
+    this.web = new HelloAppWeb(Router)
   }
 }
 
