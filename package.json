@@ -1,0 +1,26 @@
+{
+  "name": "mcms",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ayushkamadji/mcms.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ayushkamadji/mcms/issues"
+  },
+  "homepage": "https://github.com/ayushkamadji/mcms#readme",
+  "dependencies": {
+    "dotenv": "^7.0.0",
+    "express": "^4.16.4",
+    "knex": "^0.16.3",
+    "pg": "^7.8.2"
+  }
+}
