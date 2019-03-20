@@ -4,6 +4,7 @@ require("dotenv").config()
 const express = require("express")
 const helmet = require("helmet")
 const knex = require("knex")
+const migrationSource = require("./lib/db/migration-source")
 
 // CREATE DATABASE AND SERVER
 const { DB_HOST, DB_PORT, DB_NAME, DB_USER, DB_PASSWORD, SERVER_PORT } = process.env
@@ -17,6 +18,7 @@ const db = knex({
     password: DB_PASSWORD
   }
 })
+db.migrationSource = migrationSource()
 const server = express()
 
 // IMPORT APPS
