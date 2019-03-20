@@ -18,8 +18,10 @@ const db = knex({
     password: DB_PASSWORD
   }
 })
-db.migrationSource = migrationSource()
 const server = express()
+
+// SETUP DATABASE
+db.migrationSource = migrationSource()
 
 // IMPORT APPS
 const hello = require("./apps/hello")()
