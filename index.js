@@ -24,6 +24,7 @@ const server = express()
 db.migrationSource = migrationSource()
 
 // IMPORT APPS
+const access = require("./lib/core/access")(db)
 const hello = require("./apps/hello")()
 
 // LOAD MIDDLEWARES
