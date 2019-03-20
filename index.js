@@ -36,6 +36,10 @@ server.get("/", (req, res) => {
   res.send("MCMS")
 })
 
-server.listen(SERVER_PORT || 3000, () => {
-  console.log("Listening on 3000")
-})
+  // MIGRATE DB AND RUN
+  db.migrate.latest({ migrationSource: db.migrationSource })
+    .then( () => {
+      server.listen(SERVER_PORT || 3000, () => {
+        console.log("Listening on 3000")
+      })
+    })
