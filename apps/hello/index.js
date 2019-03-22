@@ -1,34 +1,17 @@
 const Router = require("express").Router
+const helloRouter = require("./router")
 
 const hello = function(system) {
-  // System
-  const { core: {access }} = system
   // Router
-  const appRouter = Router()
-  const pathRouter = Router()
-  appRouter.use("/hello", pathRouter)
-  pathRouter.get("/", (req, res) => res.send("HHHEEELLLOOO....."))
-
-  pathRouter.post("/login", access.authenticate(), (req, res) => {
-    req.session.user = req.user
-    res.json(req.user.responseData())
-  })
-
-  pathRouter.get("/testauth", access.authorize("authenticated"), (req, res) => {
-    res.send("Auth test")
-  })
-
-  pathRouter.get("/logout", (req, res) => {
-    req.logout()
-    res.sendStatus(204)
-  })
+  const router = helloRouter(system)
 
   const helloApp = {
     models: {},
     web: {
-      router: appRouter
+      router: router
     }
   }
+
   return helloApp
 }
 

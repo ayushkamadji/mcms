@@ -2,6 +2,7 @@ require("dotenv").config()
 
 // IMPORTS
 const express = require("express")
+const Router = express.Router
 const session = require("express-session")
 const helmet = require("helmet")
 const knex = require("knex")
@@ -34,7 +35,7 @@ db.migrationSource = migrationSource()
 
 // IMPORT APPS
 const access = require("./lib/core/access")(db)
-const hello = require("./apps/hello")({db, core: { access}})
+const hello = require("./apps/hello")({db, Router, core: { access}})
 
 // LOAD MIDDLEWARES
 const sessionMiddleware = session({
