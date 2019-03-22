@@ -7,7 +7,15 @@ const knex = require("knex")
 const migrationSource = require("./lib/db/migration-source")
 
 // CREATE DATABASE AND SERVER
-const { DB_HOST, DB_PORT, DB_NAME, DB_USER, DB_PASSWORD, SERVER_PORT } = process.env
+const { 
+  DB_HOST, 
+  DB_PORT, 
+  DB_NAME, 
+  DB_USER, 
+  DB_PASSWORD, 
+  SERVER_PORT,
+  SESSION_SECRET
+ } = process.env
 const db = knex({
   client: "pg",
   connection: {
@@ -25,10 +33,14 @@ db.migrationSource = migrationSource()
 
 // IMPORT APPS
 const access = require("./lib/core/access")(db)
-const hello = require("./apps/hello")()
+const hello = require("./apps/hello")({db, core: { access}})
 
 // LOAD MIDDLEWARES
 server.use(helmet())
+server.use(express.json())
+server.use(access.middleware.initialize())
+server.use(access.middleware.session())
+
 // AND APPS
 server.use(hello.web.router)
 
