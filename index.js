@@ -2,6 +2,7 @@ require("dotenv").config()
 
 // IMPORTS
 const express = require("express")
+const session = require("express-session")
 const helmet = require("helmet")
 const knex = require("knex")
 const migrationSource = require("./lib/db/migration-source")
@@ -36,6 +37,12 @@ const access = require("./lib/core/access")(db)
 const hello = require("./apps/hello")({db, core: { access}})
 
 // LOAD MIDDLEWARES
+const sessionMiddleware = session({
+  secret: SESSION_SECRET,
+  resave: false,
+  saveUninitialized: true
+})
+server.use(sessionMiddleware)
 server.use(helmet())
 server.use(express.json())
 server.use(access.middleware.initialize())

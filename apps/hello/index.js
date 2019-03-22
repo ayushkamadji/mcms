@@ -10,8 +10,17 @@ const hello = function(system) {
   pathRouter.get("/", (req, res) => res.send("HHHEEELLLOOO....."))
 
   pathRouter.post("/login", access.authenticate(), (req, res) => {
-    if (req.user) return res.json(req.user)
-    res.send(401)
+    req.session.user = req.user
+    res.json(req.user.responseData())
+  })
+
+  pathRouter.get("/testauth", access.authorize("authenticated"), (req, res) => {
+    res.send("Auth test")
+  })
+
+  pathRouter.get("/logout", (req, res) => {
+    req.logout()
+    res.sendStatus(204)
   })
 
   const helloApp = {
