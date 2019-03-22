@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>My Blog</title>
+</head>
+<body>
+  <h1>Index</h1>
+  <% if (posts.length != 0) { %>
+    <ul>
+      <% posts.forEach( function(post) { %>
+        <li>
+          <h3><%= post.title %></h3>
+          <h5><%= post.created_at %></h5>
+          <p><%= post.body %></p>
+        </li>
+      <% }) %>
+    </ul>
+  <% } %>
+</body>
+</html>

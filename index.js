@@ -2,11 +2,14 @@ require("dotenv").config()
 
 // IMPORTS
 const express = require("express")
-const Router = express.Router
 const session = require("express-session")
 const helmet = require("helmet")
 const knex = require("knex")
 const migrationSource = require("./lib/db/migration-source")
+
+// Constructors/Factories
+const Router = express.Router
+const Model = require("./lib/common/model")
 
 // CREATE DATABASE AND SERVER
 const { 
@@ -33,9 +36,14 @@ const server = express()
 // SETUP DATABASE
 db.migrationSource = migrationSource()
 
+
 // IMPORT APPS
 const access = require("./lib/core/access")(db)
-const hello = require("./apps/hello")({db, Router, core: { access}})
+const system = {
+  db, Router, Model, core: {access}, apps: {}
+}
+const hello = require("./apps/hello")(system)
+const blog = require("./apps/blog")(system)
 
 // LOAD MIDDLEWARES
 const sessionMiddleware = session({
@@ -51,6 +59,7 @@ server.use(access.middleware.session())
 
 // AND APPS
 server.use(hello.web.router)
+server.use(blog.web.router)
 
 // STUB ROUTE AND RUN
 server.get("/", (req, res) => {
