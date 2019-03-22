@@ -9,8 +9,12 @@ const router = ({ Router, core: { access } }) => {
     res.json(req.user.responseData())
   })
 
-  pathRouter.get("/testauth", access.authorize("SITE_OWNER"), (req, res) => {
+  pathRouter.get("/testauth", access.authorize("authenticated"), (req, res) => {
     res.send("Auth test")
+  })
+
+  pathRouter.get("/testowner", access.authorize("SITE_OWNER"), (req, res) => {
+    res.send("Owner test")
   })
 
   pathRouter.get("/logout", (req, res) => {
