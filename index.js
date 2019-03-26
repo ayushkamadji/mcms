@@ -6,38 +6,17 @@ const webpackConfig = require("./webpack.config")
 const express = require("express")
 const session = require("express-session")
 const helmet = require("helmet")
-const knex = require("knex")
-const migrationSource = require("./lib/db/migration-source")
 
 // Constructors/Factories
 const Router = express.Router
 const Model = require("./lib/common/model")
 
-// CREATE DATABASE AND SERVER
-const { 
-  DB_HOST, 
-  DB_PORT, 
-  DB_NAME, 
-  DB_USER, 
-  DB_PASSWORD, 
-  SERVER_PORT,
-  SESSION_SECRET
- } = process.env
-const db = knex({
-  client: "pg",
-  connection: {
-    host: DB_HOST,
-    port: DB_PORT,
-    database: DB_NAME,
-    user: DB_USER,
-    password: DB_PASSWORD
-  }
-})
+// IMPORT DATABASE
+const db = require("./lib/db")
+
+// CREATE SERVER
+const { SERVER_PORT, SESSION_SECRET } = process.env
 const server = express()
-
-// SETUP DATABASE
-db.migrationSource = migrationSource()
-
 
 // IMPORT APPS
 const access = require("./lib/core/access")(db)
