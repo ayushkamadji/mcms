@@ -1,6 +1,8 @@
 require("dotenv").config()
 
 // IMPORTS
+const webpack = require("webpack")
+const webpackConfig = require("./webpack.config")
 const express = require("express")
 const session = require("express-session")
 const helmet = require("helmet")
@@ -42,6 +44,7 @@ const access = require("./lib/core/access")(db)
 const system = {
   db, Router, Model, core: {access}, apps: {}
 }
+const dashboard = require("./lib/apps/dashboard")(system)
 const hello = require("./apps/hello")(system)
 const blog = require("./apps/blog")(system)
 
@@ -58,6 +61,7 @@ server.use(access.middleware.initialize())
 server.use(access.middleware.session())
 
 // AND APPS
+server.use(dashboard.web.router)
 server.use(hello.web.router)
 server.use(blog.web.router)
 
@@ -66,10 +70,15 @@ server.get("/", (req, res) => {
   res.send("MCMS")
 })
 
-  // MIGRATE DB AND RUN
+  // MIGRATE DB, COMPILE DASHBOARD AND RUN
   db.migrate.latest({ migrationSource: db.migrationSource })
     .then( () => {
-      server.listen(SERVER_PORT || 3000, () => {
-        console.log("Listening on 3000")
+      const compiler = webpack(webpackConfig)
+      compiler.run((err, _) => {
+        if (err) throw err
+        server.listen(SERVER_PORT || 3000, () => {
+          console.log("Listening on 3000")
+        })
       })
     })
+
