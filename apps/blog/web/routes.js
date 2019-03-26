@@ -1,8 +1,9 @@
-const routes = ({Router, Controllers: {PostsController}}) => {
+const routes = ({Router, access, Controllers: {PostsController}}) => {
   const router = Router()
 
-  router.get("/", PostsController.index)
-  router.post("/", PostsController.create)
+  router.get("/posts", PostsController.index)
+  router.post("/posts", access.authorize("SITE_OWNER"), PostsController.create)
+  router.get("/posts/:id", PostsController.show)
   return router
 }
 

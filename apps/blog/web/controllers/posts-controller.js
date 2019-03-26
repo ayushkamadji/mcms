@@ -5,6 +5,13 @@ const PostsController = ({Posts}, views) => {
       .catch(next)
   }
 
+  const show = (req, res, next) => {
+    const { id } = req.params
+    Posts.findById(id)
+      .then( post => res.render(views.post, { post }))
+      .catch(next)
+  }
+
   const create = (req, res, next) => {
     const data = req.body
     Posts.create(data)
@@ -14,7 +21,8 @@ const PostsController = ({Posts}, views) => {
 
   return {
     index,
-    create
+    create,
+    show
   }
 }
 
