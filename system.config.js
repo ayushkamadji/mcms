@@ -1,6 +1,13 @@
 const appsDir = "./apps"
 const appNames = [ "blog", "hello" ]
 
+const users = {
+  dashboard: {
+    component: require("./lib/core/access/web/dashboard").default,
+    menu: require("./lib/core/access/web/dashboard/menu").default
+  }
+}
+
 const apps = appNames.reduce( (acc, appName) => {
   return Object.assign(acc, {
     [appName]: {
@@ -10,7 +17,7 @@ const apps = appNames.reduce( (acc, appName) => {
       }
     }
   })
-}, {})
+}, { users })
 
 module.exports = {
   apps
