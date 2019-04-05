@@ -1,5 +1,5 @@
 const appsDir = "./apps"
-const appNames = [ "blog", "hello" ]
+const appNames = [ "blog" ]
 
 const users = require("./lib/core/access/config")
 
