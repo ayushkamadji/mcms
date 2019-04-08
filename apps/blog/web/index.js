@@ -1,7 +1,7 @@
 
-const web = ({Router, core: {access}, apps: {blog: {models}}}) => {
+const web = ({Router, core: {access}, apps: {blog: {models}, static }}) => {
   const views = require("./views")
-  const Controllers = require("./controllers")(models, views)
+  const Controllers = require("./controllers")(models, views) // static.web.views.partials
   const routes = require("./routes")({Router, access, Controllers})
   const appRouter = Router()
 

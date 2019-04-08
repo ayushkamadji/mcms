@@ -1,7 +1,7 @@
-const PostsController = ({Posts}, views) => {
+const PostsController = ({Posts}, views, partials) => {
   const index = (req, res, next) => {
     Posts.findAll()
-      .then( posts => res.render(views.index, { posts }) )
+      .then( posts => res.render(views.index, { posts, partials }) )
       .catch(next)
   }
 
