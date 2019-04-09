@@ -36,12 +36,15 @@
     "webpack-cli": "^3.3.0"
   },
   "devDependencies": {
+    "node-sass": "^4.11.0",
     "nodemon": "^1.18.10"
   },
   "scripts": {
     "dev": "nodemon -i dist/ .",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack"
+    "build": "webpack",
+    "sass:compile": "node-sass --include-path sass './lib/apps/static/web/views/styles/main.scss' './lib/public/styles/static.css'",
+    "sass:watch": "node-sass --watch './lib/apps/static/web/views/styles/main.scss' './lib/public/styles/static.css'"
   },
   "repository": {
     "type": "git",

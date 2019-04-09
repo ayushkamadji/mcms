@@ -1,14 +1,19 @@
-const PostsController = ({Posts}, views) => {
+const path = require('path');
+
+const PostsController = ({Posts}, views, partials) => {
   const index = (req, res, next) => {
     Posts.findAll()
-      .then( posts => res.render(views.index, { posts }) )
+      .then( posts => res.render(views.index, { posts, partials }) )
       .catch(next)
   }
 
   const show = (req, res, next) => {
     const { id } = req.params
     Posts.findById(id)
-      .then( post => res.render(views.post, { post }))
+      .then( post => res.render(views.post, {
+        post,
+        partialsPath: path.join(__dirname, '../../../../lib/apps/static/web/views/partials')
+      }))
       .catch(next)
   }
 

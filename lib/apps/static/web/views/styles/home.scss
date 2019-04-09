@@ -1,0 +1,66 @@
+.main {
+  width: 100%;
+}
+
+.content {
+  margin-top: 32px;
+  padding: 24px;
+}
+
+.post_list {
+  a {
+    text-decoration: none;
+  }
+}
+
+.post_item {
+  padding-bottom: 16px;
+  font-size: 12px;
+
+  h4 {
+    color: rgba(34,34,34,0.6);
+    line-height: 14px;
+  }
+
+  img {
+    width: 100%;
+  }
+
+  h2 {
+    color: rgba(34,34,34,0.9);
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 16px;
+  }
+
+  .short_desc {
+    color: rgba(34,34,34,0.3);
+    font-weight: 500;
+    line-height: 14px;
+  }
+}
+
+.post_content {
+  color: rgba(34,34,34,0.6);
+  line-height: 16px;
+}
+
+.about_bg {
+  background: url('/public/assets/about_bg.png') no-repeat;
+  background-position: top;
+  background-size: 100%;
+  min-height: 120px;
+  margin-top: 36px;
+}
+
+.mt_0 {
+  margin-top: 0 !important;
+}
+
+.about_content {
+  color: rgba(34,34,34,0.6);
+  font-family: "SF UI Text";
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 16px;
+}
