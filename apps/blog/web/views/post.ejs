@@ -1,13 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title><%= post.title %></title>
-</head>
-<body>
-  <h2><%= post.title %></h1>
-  <p><%= post.body %></p>
-</body>
-</html>
+<%- include(partialsPath+'/head') %>
+<div class="main">
+  <%- include(partialsPath+'/header') %>
+  <div class="content">
+    <% if (post) { %>
+    <div class="post_list">
+      <div class="post_item">
+        <h4><%= post.created_at %></h4>
+        <img src="<%= `/public/assets/${post.image_url}` %>">
+        <h2><%= post.title %></h2>
+        <p class="post_content"><%= post.body %></p>
+      </div>
+    </div>
+    <% } %>
+  </div>
+</div>
+<%- include(partialsPath+'/footer') %>
