@@ -1,12 +1,12 @@
 .menuToggle {
   margin-top: -50px;
   display: block;
-  position: relative;
-  top: 18px;
+  position: fixed;
+  top: 66px;
   left: 24px;
   width: calc(100% - 24px);
 
-  z-index: 1;
+  z-index: 11;
 
   -webkit-user-select: none;
   user-select: none;
@@ -73,10 +73,16 @@
   }
 }
 
+.menu_show {
+  display: block !important;
+}
+
 .menu {
+  display: none;
+
   position: absolute;
   min-width: 240px;
-  height: calc(100vh + 50px);
+  height: calc(100vh + 100px);
   margin: -115px 0 0 -50px;
   padding: 50px;
   padding-top: 125px;
