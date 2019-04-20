@@ -82,14 +82,26 @@
 
 .content {
   margin-top: 32px;
-  padding: 24px; }
+  padding: 24px 12px; }
 
-.post_list a {
-  text-decoration: none; }
+.post_list {
+  display: flex;
+  width: 100%;
+  flex-flow: row wrap;
+  justify-content: flex-start; }
+  .post_list a {
+    text-decoration: none; }
 
 .post_item {
-  padding-bottom: 16px;
+  flex: 0 1 33%;
+  padding: 0 8px 16px 8px;
   font-size: 12px; }
+  @media screen and (max-width: 728px) {
+    .post_item {
+      flex: 0 1 100%; } }
+  @media screen and (min-width: 729px) and (max-width: 1080px) {
+    .post_item {
+      flex: 0 1 50%; } }
   .post_item h4 {
     color: rgba(34, 34, 34, 0.6);
     line-height: 14px; }
@@ -104,6 +116,11 @@
     color: rgba(34, 34, 34, 0.3);
     font-weight: 500;
     line-height: 14px; }
+
+.post_detail .post_item {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1080px; }
 
 .post_content {
   color: rgba(34, 34, 34, 0.6);
