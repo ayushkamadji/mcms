@@ -111,25 +111,42 @@
   text-transform: uppercase;
 }
 
+.header_title {
+  color: rgba(34,34,34,0.9);
+  font-family: "SF UI Text";
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 18px;
+
+  left: 42px;
+  right: 42px;
+  top: 6px;
+  text-align: center;
+  z-index: 22;
+}
+
+.flash {
+  animation-name: flash;
+  animation-duration: 0.7s;
+  animation-timing-function: linear;
+  animation-iteration-count: initial;
+  animation-direction: alternate;
+  animation-play-state: running;
+}
+
+@keyframes flash {
+  from {color: #a7b90e}
+  to {color: rgba(34,34,34,0.9)}
+}
+
 .header_text {
-  z-index: 20;
-  position: relative;
+  // z-index: 20;
+  // position: relative;
 
   margin: 0 16px;
   padding: 8px;
   border-bottom: solid 1px #dddddd;
   text-align: center;
-
-  h1 {
-    color: rgba(34,34,34,0.9);
-    font-family: "SF UI Text";
-    font-size: 16px;
-    font-weight: bold;
-    line-height: 18px;
-
-    left: calc(50% - 100px);
-    top: 6px;
-  }
 
   h2 {
     color: rgba(34,34,34,0.6);
