@@ -3,7 +3,7 @@
   <%- include(partialsPath+'/header') %>
   <div class="content">
     <% if (post) { %>
-    <div class="post_list">
+    <div class="post_detail">
       <div class="post_item">
         <h4><%= post.created_at %></h4>
         <img src="<%= `/public/assets/${post.image_url}` %>">

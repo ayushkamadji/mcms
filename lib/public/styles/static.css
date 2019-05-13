@@ -1,17 +1,23 @@
 .header {
+  z-index: 10;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   padding: 16px;
   background-color: #FFFFFF;
   box-shadow: 0 2px 4px 0 rgba(34, 34, 34, 0.3);
-  text-align: center; }
+  text-align: center;
+  height: 50px; }
 
 .menuToggle {
   margin-top: -50px;
   display: block;
-  position: relative;
-  top: 18px;
+  position: fixed;
+  top: 66px;
   left: 24px;
   width: calc(100% - 24px);
-  z-index: 1;
+  z-index: 11;
   -webkit-user-select: none;
   user-select: none; }
   .menuToggle input {
@@ -52,10 +58,14 @@
   .menuToggle input:checked ~ ul {
     transform: none; }
 
+.menu_show {
+  display: block !important; }
+
 .menu {
+  display: none;
   position: absolute;
   min-width: 240px;
-  height: calc(100vh + 50px);
+  height: calc(100vh + 100px);
   margin: -115px 0 0 -50px;
   padding: 50px;
   padding-top: 125px;
@@ -78,18 +88,30 @@
     color: #232323; }
 
 .main {
-  width: 100%; }
+  width: 100%;
+  margin-top: 50px; }
 
 .content {
-  margin-top: 32px;
-  padding: 24px; }
+  padding: 0 12px 24px 12px; }
 
-.post_list a {
-  text-decoration: none; }
+.post_list {
+  display: flex;
+  width: 100%;
+  flex-flow: row wrap;
+  justify-content: flex-start; }
+  .post_list a {
+    text-decoration: none; }
 
 .post_item {
-  padding-bottom: 16px;
+  flex: 0 1 33%;
+  padding: 0 8px 16px 8px;
   font-size: 12px; }
+  @media screen and (max-width: 728px) {
+    .post_item {
+      flex: 0 1 100%; } }
+  @media screen and (min-width: 729px) and (max-width: 1080px) {
+    .post_item {
+      flex: 0 1 50%; } }
   .post_item h4 {
     color: rgba(34, 34, 34, 0.6);
     line-height: 14px; }
@@ -105,16 +127,14 @@
     font-weight: 500;
     line-height: 14px; }
 
+.post_detail .post_item {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1080px; }
+
 .post_content {
   color: rgba(34, 34, 34, 0.6);
   line-height: 16px; }
-
-.about_bg {
-  background: url("/public/assets/about_bg.png") no-repeat;
-  background-position: top;
-  background-size: 100%;
-  min-height: 120px;
-  margin-top: 36px; }
 
 .mt_0 {
   margin-top: 0 !important; }
@@ -125,6 +145,116 @@
   font-size: 14px;
   font-weight: 500;
   line-height: 16px; }
+
+.home_bg {
+  margin-top: 36px;
+  text-align: center;
+  background: #000000; }
+  .home_bg img {
+    width: 100%; }
+    @media screen and (min-width: 1080px) {
+      .home_bg img {
+        width: 75%; } }
+
+.header_circle {
+  margin-top: -46px;
+  position: relative;
+  left: calc(50% - 48px);
+  height: 96px;
+  width: 96px;
+  background-color: #FFFFFF;
+  box-shadow: 0 2px 9px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 50%;
+  color: #92278F;
+  text-align: center;
+  font-weight: 600;
+  font-size: 4rem;
+  line-height: 6rem;
+  text-transform: uppercase; }
+
+.header_title {
+  color: rgba(34, 34, 34, 0.9);
+  font-family: "SF UI Text";
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 18px;
+  left: 42px;
+  right: 42px;
+  top: 6px;
+  text-align: center;
+  z-index: 22; }
+
+.flash {
+  animation-name: flash;
+  animation-duration: 0.7s;
+  animation-timing-function: linear;
+  animation-iteration-count: initial;
+  animation-direction: alternate;
+  animation-play-state: running; }
+
+@keyframes flash {
+  from {
+    color: #a7b90e; }
+  to {
+    color: rgba(34, 34, 34, 0.9); } }
+
+.header_text {
+  margin: 0 16px;
+  padding: 8px;
+  border-bottom: solid 1px #dddddd;
+  text-align: center; }
+  .header_text h2 {
+    color: rgba(34, 34, 34, 0.6);
+    font-family: "SF UI Text";
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16px; }
+
+.sticky {
+  position: fixed; }
+
+.img_gallery img {
+  padding: 4px;
+  width: 80%; }
+  @media screen and (min-width: 320px) and (max-width: 475px) {
+    .img_gallery img {
+      width: calc(50% - 4px); } }
+  @media screen and (min-width: 476px) and (max-width: 728px) {
+    .img_gallery img {
+      width: calc(33% - 4px); } }
+  @media screen and (min-width: 729px) {
+    .img_gallery img {
+      width: calc(20% - 4px); } }
+
+.sl-overlay {
+  background: #000000 !important; }
+
+.form_control {
+  padding: 8px 0; }
+  .form_control label {
+    display: block;
+    padding: 4px;
+    font-weight: 600;
+    color: rgba(34, 34, 34, 0.6); }
+  .form_control input, .form_control textarea {
+    width: 100%;
+    padding: 14px 16px;
+    border-radius: 8px;
+    background-color: rgba(153, 153, 153, 0.1);
+    border: none; }
+
+.button_control {
+  text-align: right;
+  padding: 8px 0; }
+  .button_control button {
+    padding: 8px;
+    height: 40px;
+    width: 80px;
+    border-radius: 8px;
+    background-color: rgba(34, 34, 34, 0.9);
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600; }
 
 body {
   color: #000000; }
