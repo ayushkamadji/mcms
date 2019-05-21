@@ -1,6 +1,6 @@
 const path = require('path');
 
-const PostsController = ({Posts}, views, partials) => {
+const PostsController = ({Posts}, views, common, partials) => {
   const index = (req, res, next) => {
     Posts.findAll()
       .then( posts => res.render(views.index, { posts, partials }) )
@@ -9,10 +9,14 @@ const PostsController = ({Posts}, views, partials) => {
 
   const show = (req, res, next) => {
     const { id } = req.params
-    Posts.findById(id)
-      .then( post => res.render(views.post, {
+    Promise.all([
+      common.getOwner(),
+      Posts.findById(id) 
+      ])
+      .then( ([owner, post]) => res.render(views.post, {
         post,
-        partialsPath: path.join(__dirname, '../../../../lib/apps/static/web/views/partials')
+        partials: common.views.partials,
+        owner
       }))
       .catch(next)
   }

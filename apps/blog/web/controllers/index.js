@@ -1,4 +1,4 @@
-module.exports = (models, views, partials) => ({
-   PostsController: require("./posts-controller")(models, views, partials)
+module.exports = (models, views, common) => ({
+   PostsController: require("./posts-controller")(models, views, common)
 })
 
