@@ -28,7 +28,6 @@
     "ra-data-json-server": "^2.8.5",
     "ra-data-simple-rest": "^2.8.5",
     "react": "^16.8.5",
-    "react-admin": "^2.8.5",
     "react-dom": "^16.8.5",
     "react-hot-loader": "^4.8.0",
     "react-router": "^5.0.0",
