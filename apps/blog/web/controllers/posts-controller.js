@@ -1,5 +1,3 @@
-const path = require('path');
-
 const PostsController = ({Posts}, views, common, partials) => {
   const index = (req, res, next) => {
     Posts.findAll()
@@ -31,8 +29,53 @@ const PostsController = ({Posts}, views, common, partials) => {
   return {
     index,
     create,
-    show
+    show,
+    api: PostsApiController({Posts})
   }
+}
+
+const PostsApiController = ({Posts}) => {
+  const index = (req, res, next) => {
+    Posts.findAll()
+      .then( posts => res.json(posts) )
+      .catch(next)
+  }
+
+  const create = (req, res, next) => {
+    const data = req.body
+    Posts.create(data)
+      .then(post => res.json(post))
+      .catch(next)
+  }
+
+  const read = (req, res, next) => {
+    const { id } = req.params
+      Posts.findById(id) 
+      .then(post => res.json(post))
+      .catch(next)
+  }
+
+  const update = (req, res, next) => {
+    const { id } = req.params
+    const data = req.body
+    Posts.updateById(id, data)
+      .then(post => res.json(post))
+      .catch(next)
+  }
+
+  const destroy = (req, res, next) => {
+    const { id } = req.params
+    Posts.destroyById(id)
+      .then( success => {
+        if (success) {
+          return res.json("OK")
+        }
+        res.sendStatus(404)
+      })
+      .catch(next)
+  }
+  
+  return { index, create, read, update, destroy }
 }
 
 module.exports = PostsController

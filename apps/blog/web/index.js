@@ -5,7 +5,8 @@ const web = ({Router, core: {access}, apps: {blog: {models} }, common}) => {
   const routes = require("./routes")({Router, access, Controllers})
   const appRouter = Router()
 
-  appRouter.use("/blog", routes)
+  appRouter.use("/blog", routes.webRouter)
+  appRouter.use("/api/blog", routes.apiRouter)
 
   return {
     router: appRouter,
