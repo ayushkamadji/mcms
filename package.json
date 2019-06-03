@@ -52,17 +52,16 @@
     "webpack-node-externals": "^1.7.2"
   },
   "scripts": {
-    "watch": "npm run watch-client & npm run watch-server & npm run dev",
+    "watch": "npm run watch-syscon & npm run watch-server & npm run watch-client & npm run start",
     "build": "rm -rf dist && npm run build-server && npm run build-client",
-    "build-ori": "webpack",
     "build-server": "webpack --mode development --config webpack.server.config.js",
     "build-client": "webpack --mode development --config webpack.client.config.js",
     "build-syscon": "webpack --mode development --config webpack.syscon.config.js",
     "watch-server": "webpack --progress --colors --watch --mode development --config './webpack.server.config.js'",
     "watch-client": "webpack --progress --colors --watch --mode development --config './webpack.client.config.js'",
-    "dev": "nodemon -i dist/ index.js",
+    "watch-syscon": "webpack --progress --colors --watch --mode development --config './webpack.syscon.config.js'",
+    "dev": "node -i ./dist/server.js",
     "start": "nodemon ./dist/server.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
     "sass:compile": "node-sass --include-path sass './lib/apps/static/web/views/styles/main.scss' './lib/public/styles/static.css'",
     "sass:watch": "node-sass --watch './lib/apps/static/web/views/styles/main.scss' './lib/public/styles/static.css'"
   },
