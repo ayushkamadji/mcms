@@ -5,7 +5,7 @@ import { APIContext } from '../index'
 const MainRouter = (props) => (
   <Switch>
     {
-      [<Route key="dash" exact path="/" component={ () => <h1>dash</h1>}/>]
+      [<Route key="dash" exact path="/" component={ () => <h1>dash mu</h1>}/>]
         .concat(Object.keys(props.apps).map( appName => {
         const Comp = props.apps[appName].dashboard.component
         return (

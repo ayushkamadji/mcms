@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import Root from './Root'
-import { hot } from 'react-hot-loader'
 
-class App extends Component {
+export default class App extends Component {
   constructor(props) {
     super(props)
   }
@@ -13,5 +12,3 @@ class App extends Component {
     )
   }
 }
-
-export default hot(module)(App)
