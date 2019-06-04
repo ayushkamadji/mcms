@@ -53,14 +53,15 @@
   },
   "scripts": {
     "watch": "npm run watch-syscon & npm run watch-server & npm run watch-client & npm run start",
-    "build": "rm -rf dist && npm run build-server && npm run build-client",
+    "new-build": "rm -rf dist && npm run build-server && npm run build-client",
     "build-server": "webpack --mode development --config webpack.server.config.js",
     "build-client": "webpack --mode development --config webpack.client.config.js",
     "build-syscon": "webpack --mode development --config webpack.syscon.config.js",
     "watch-server": "webpack --progress --colors --watch --mode development --config './webpack.server.config.js'",
     "watch-client": "webpack --progress --colors --watch --mode development --config './webpack.client.config.js'",
     "watch-syscon": "webpack --progress --colors --watch --mode development --config './webpack.syscon.config.js'",
-    "dev": "node -i ./dist/server.js",
+    "dev": "npm run build && nodemon -i *dist/* . --verbose",
+    "build": "webpack",
     "start": "nodemon ./dist/server.js",
     "sass:compile": "node-sass --include-path sass './lib/apps/static/web/views/styles/main.scss' './lib/public/styles/static.css'",
     "sass:watch": "node-sass --watch './lib/apps/static/web/views/styles/main.scss' './lib/public/styles/static.css'"
