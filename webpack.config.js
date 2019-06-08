@@ -1,6 +1,8 @@
 const webpack = require("webpack")
 const path = require("path")
 const HtmlWebpackPlugin = require("html-webpack-plugin")
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const extractTextCSS = new ExtractTextPlugin('main.bundle.css');
 const CleanWebpackPlugin = require("clean-webpack-plugin")
 const ProvidePlugin = webpack.ProvidePlugin
 
@@ -46,7 +48,8 @@ module.exports = {
         template: path.join(__dirname, "lib/apps/dashboard/src/index.html")
       }),
       new webpack.HotModuleReplacementPlugin(),
-      reloadHtml
+      reloadHtml,
+      extractTextCSS
     ],
     resolve: {
       extensions: ["*", ".js", ".jsx", ".json"]
@@ -57,8 +60,34 @@ module.exports = {
     },
     module: {
       rules: [
-        { test: /\.scss$/,
-          use: [ "style-loader", "css-loader", "sass-loader" ] },
+        {
+          test: /\.scss$/,
+          use: extractTextCSS.extract({
+            fallback: 'style-loader',
+            use: [
+              {
+                loader: 'css-loader',
+                options: {
+                  sourceMap: true,
+                  modules: true,
+                  importLoaders: 1,
+                  localIdentName: '[local]___[hash:base64:5]'
+                }
+              },
+              {
+                loader: 'postcss-loader',
+                options: {
+                  sourceMap: true,
+                  config: {
+                    path: './'
+                  }
+                }
+              },
+              'resolve-url-loader',
+              'sass-loader?sourceMap'
+            ]
+          }),
+        },
         { test: /\.css%/,
           use: ["style-loader", "css-loader"] },
         { test: /\.jsx?$/,
