@@ -1,0 +1,40 @@
+@import './reset';
+@import './fonts';
+@import './colors';
+
+:global {
+  * {
+    box-sizing: border-box;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  input[type=text], textarea {
+    outline: none;
+    line-height: inherit !important;
+
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+
+  html {
+    height: 100%;
+    font-size: 62.5%;
+  }
+  body {
+    height: 100%;
+    background: var(--color-white-smoke);
+    color: var(--color-black);
+    font: 1.4rem/1.5 system-ui;
+  }
+}
+
+.root {
+  height: 100%;
+  display: flex;
+  flex-basis: row;
+  background: var(--color-white);
+  font-family: 'roboto', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
