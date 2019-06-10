@@ -32,9 +32,18 @@
 }
 
 .root {
-  height: 100%;
+  min-height: 100%;
   display: flex;
   flex-basis: row;
   background: var(--color-white);
   font-family: 'roboto', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.container {
+  position: relative;
+  width: calc(100% - 240px);
+}
+
+.main_container {
+  padding: 16px;
 }
