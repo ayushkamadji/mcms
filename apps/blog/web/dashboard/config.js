@@ -3,8 +3,8 @@ const BLOG = {
 }
 
 module.exports = {
-  component: require("./index").default,
-  menu: require("./menu").default,
+  component: require("./index.jsx").default,
+  menu: require("./menu.jsx").default,
   api: {
     POST: { BLOG }
   }

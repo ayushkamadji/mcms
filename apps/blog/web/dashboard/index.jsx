@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import DashboardComponent from './components/main';
 
 export class BlogDash extends Component {
   constructor(props) {
@@ -23,29 +24,13 @@ export class BlogDash extends Component {
   }
 
   render() {
-    const { posts } = this.state
+    const { posts } = this.state;
+    const props = {
+      ...this.props,
+      posts
+    };
     if (posts) {
-      return (
-        <div>
-          <div>Blog Dashboard</div>
-          <div style={{display: "flex"}}>
-            <div>Title</div>
-            <div>Body</div>
-            <div>Image</div>
-            <div>Created At</div>
-          </div>
-          {posts.map( post => {
-            return (
-              <div key={post.id} style={{display: "flex"}}>
-                <div>{post.title}</div>
-                <div>{post.body}</div>
-                <div>{post.image_url}</div>
-                <div>{post.created_at}</div>
-              </div>
-            )
-          })}
-        </div>
-      )
+      return DashboardComponent(props);
     }
     return <div>Blog dash no post</div>
   }

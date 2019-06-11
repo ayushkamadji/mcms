@@ -1,0 +1,45 @@
+@import '../../../../../lib/apps/dashboard/src/Utils/styles/colors.scss'; // TODO: fix path
+
+.dash_wrapper {
+  padding: 8px 16px;
+  border: 1px solid var(--color-white-smoke);
+  border-radius: 8px;
+  background-color: var(--color-white);
+  box-shadow: 0 2px 16px 0 var(--color-black-light);
+}
+
+.new_post {
+  padding: 16px 0;
+  text-align: right;
+
+  button {
+    padding: 8px 16px;
+    border-radius: 8px;
+    background-color: var(--color-blue);
+    color: var(--color-white);
+    text-align: right;
+  }
+}
+
+.blog_item {
+  padding: 8px 0;
+  border-bottom: 1px solid var(--color-white-smoke);
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  h3 {
+    padding-bottom: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--color-black-strong);
+  }
+  .shorted_body {
+
+  }
+  .published {
+    color: var(--color-black-light);
+    font-size: 12px;
+  }
+}
