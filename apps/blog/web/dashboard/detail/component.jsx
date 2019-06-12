@@ -3,9 +3,9 @@ import React from 'react';
 import { FormInput, FormTextArea } from '../common/form/index';
 import styles from './styles.scss';
 
-class DashboardComponent {
+class BlogDetailComponent {
   static render(props) {
-    return new DashboardComponent(props).root();
+    return new BlogDetailComponent(props).root();
   }
 
   constructor(props) {
@@ -42,4 +42,4 @@ class DashboardComponent {
   }
 }
 
-export default DashboardComponent.render;
+export default BlogDetailComponent.render;
