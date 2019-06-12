@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import React from 'react';
 import styles from './styles.scss';
 
@@ -40,9 +41,11 @@ class DashboardComponent {
     const created = post.created_at;
     return (
       <div className={styles.blog_item} key={`blog-${post.id}`}>
-        <h3>{post.title}</h3>
-        <div className={styles.shorted_body}>{`${post.body.substring(0, 150)} ...`}</div>
-        <div className={styles.published}>{`Published on ${created}`}</div>
+        <Link to={`/blog/${post.id}`}>
+          <h3>{post.title}</h3>
+          <div className={styles.shorted_body}>{`${post.body.substring(0, 150)} ...`}</div>
+          <div className={styles.published}>{`Published on ${created}`}</div>
+        </Link>
       </div>
     );
   }
