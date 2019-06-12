@@ -13,7 +13,15 @@ module.exports = [
   },
   {
     component: require("./detail/index.jsx").default,
-    params: '/:blogId',
+    params: '/edit/:blogId',
+    exact: true,
+    api: {
+      POST: { BLOG }
+    }
+  },
+  {
+    component: require("./new/index.jsx").default,
+    params: '/new',
     exact: true,
     api: {
       POST: { BLOG }

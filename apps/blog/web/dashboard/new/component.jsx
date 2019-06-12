@@ -1,11 +1,10 @@
-import { Link } from 'react-router-dom'
 import React from 'react';
 import { FormInput, FormTextArea } from '../common/form/index';
 import styles from '../common/detail/styles.scss';
 
-class BlogDetailComponent {
+class BlogNewComponent {
   static render(props) {
-    return new BlogDetailComponent(props).root();
+    return new BlogNewComponent(props).root();
   }
 
   constructor(props) {
@@ -42,4 +41,4 @@ class BlogDetailComponent {
   }
 }
 
-export default BlogDetailComponent.render;
+export default BlogNewComponent.render;

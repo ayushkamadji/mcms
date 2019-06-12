@@ -37,6 +37,9 @@ class BlogDetail extends Component {
     const editedBlog = this.state.detail;
     const blogId = 2;
 
+    if (!editedBlog.title) return;
+    else if (!editedBlog.body) return;
+
     baseAPI.request({
       method: "PATCH",
       url: `/blog/posts/${blogId}`,
