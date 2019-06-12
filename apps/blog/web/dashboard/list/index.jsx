@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import DashboardComponent from './components/main';
+import BlogList from './component';
 
 export class BlogDash extends Component {
   constructor(props) {
@@ -30,7 +30,7 @@ export class BlogDash extends Component {
       posts
     };
     if (posts) {
-      return DashboardComponent(props);
+      return BlogList(props);
     }
     return <div>Blog dash no post</div>
   }

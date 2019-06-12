@@ -4,7 +4,7 @@ const BLOG = {
 
 module.exports = [
   {
-    component: require("./index.jsx").default,
+    component: require("./list/index.jsx").default,
     menu: require('./menu.jsx').default,
     exact: true,
     api: {
@@ -12,7 +12,7 @@ module.exports = [
     }
   },
   {
-    component: require("./blogDetail.jsx").default,
+    component: require("./detail/index.jsx").default,
     params: '/:blogId',
     exact: true,
     api: {
