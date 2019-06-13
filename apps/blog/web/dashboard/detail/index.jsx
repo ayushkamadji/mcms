@@ -10,8 +10,7 @@ class BlogDetail extends Component {
   }
 
   componentDidMount() {
-    const { baseAPI } = this.props;
-    const blogId = 2;
+    const { baseAPI, match: { params: { blogId } } } = this.props;
     baseAPI.request({
       method: "GET",
       url: `/blog/posts/${blogId}`
@@ -33,9 +32,8 @@ class BlogDetail extends Component {
 
   submitBlog = (e) => {
     e.preventDefault();
-    const { baseAPI } = this.props;
+    const { baseAPI, match: { params: { blogId } } } = this.props;
     const editedBlog = this.state.detail;
-    const blogId = 2;
 
     if (!editedBlog.title) return;
     else if (!editedBlog.body) return;

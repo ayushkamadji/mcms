@@ -55,7 +55,7 @@ export class UserDash extends Component {
     e.preventDefault();
     const { baseAPI } = this.props;
     const editedProfile = this.state.user.profile;
-    const userId = 2;
+    const userId = editedProfile.id;
 
     baseAPI.request({
       method: "PATCH",
