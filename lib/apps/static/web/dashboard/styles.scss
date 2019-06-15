@@ -1,5 +1,43 @@
+@import '../../../../../lib/apps/dashboard/src/Utils/styles/colors.scss'; // TODO: fix path
+
 .gallery_wrapper {
   
+}
+
+.add_image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin: 8px;
+  min-height: 224px;
+  width: 100%;
+  max-width: 800px;
+  background-color: var(--color-white-dark);
+
+  input {
+    width: 40px;
+    height: 35px;
+
+    &::-webkit-file-upload-button {
+      border: none;
+      background-color: var(--color-white-dark);
+      color: var(--color-white-dark);
+      outline: var(--color-white-dark);
+    }
+    
+    &:before {
+      content: url('./assets/icon_addimage.png');
+      display: inline-block;
+      width: 40px;
+      height: 35px;
+      cursor: pointer;
+    }
+  }
+}
+
+.preview_image {
+  max-width: 800px;
 }
 
 .gallery_list {
