@@ -8,7 +8,9 @@ class BlogNew extends React.Component {
       detail: {
         title: '',
         body: ''
-      }
+      },
+      file: '',
+      imagePreviewUrl: ''
     };
   }
 
@@ -37,13 +39,29 @@ class BlogNew extends React.Component {
     // TODO: create success flash message
   }
 
+  onSelectImage(e) {
+    e.preventDefault();
+
+    let reader = new FileReader();
+    let file = e.target.files[0];
+
+    reader.onloadend = () => {
+      this.setState({
+        file: file,
+        imagePreviewUrl: reader.result
+      });
+    }
+
+    reader.readAsDataURL(file);
+  }
+
   render() {
-    const { detail } = this.state;
     const props = {
       ...this.props,
-      detail,
+      ...this.state,
       functions: {
         setInput: this.handleInputChange.bind(this),
+        onSelectImage: this.onSelectImage.bind(this),
         submitBlog: this.submitBlog.bind(this)
       }
     };

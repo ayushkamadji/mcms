@@ -63,7 +63,7 @@ class GalleryComponent {
   galleryItem(gallery) {
     const { deleteImage } = this.props;
     return (
-      <div className={styles.gallery_item}>
+      <div key={`gal-${gallery.id}`} className={styles.gallery_item}>
         <img src={`/public/assets/${gallery.file}`} />
         <div className={styles.delete_section}>
           <button onClick={() => deleteImage(gallery)} />
