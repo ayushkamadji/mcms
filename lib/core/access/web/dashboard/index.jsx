@@ -33,7 +33,7 @@ export class UserDash extends Component {
 
     baseAPI.request({
       method: "GET",
-      url: "/users/2/profile"
+      url: "/users/1/profile"
     })
     .then( response => response.data)
     .then( profile => this.setState({ user: { ...user, profile }

@@ -1,6 +1,6 @@
 import React from 'react';
 import { FormInput, FormTextArea } from '../common/form/index';
-import UploadImageIcon from './assets/icon_upload_image.png';
+// import UploadImageIcon from './assets/icon_upload_image.png';
 import styles from '../common/detail/styles.scss';
 
 class BlogNewComponent {
