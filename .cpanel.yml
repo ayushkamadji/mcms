@@ -1,6 +1,6 @@
 ---
 deployment:
  tasks:
- - cd mcms
- - /opt/cpanel/ea-nodejs10/bin/npm install
- - /opt/cpanel/ea-nodejs10/bin/npm run build
+ - export PATH=/opt/cpanel/ea-nodejs10/bin/:$PATH
+ - npm install
+ - npm run build
