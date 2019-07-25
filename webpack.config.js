@@ -5,6 +5,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const extractTextCSS = new ExtractTextPlugin('main.bundle.css');
 const CleanWebpackPlugin = require("clean-webpack-plugin")
 const ProvidePlugin = webpack.ProvidePlugin
+const EnvironmentPlugin = webpack.EnvironmentPlugin
 
 let devServer
 
@@ -37,6 +38,7 @@ module.exports = {
       }
     },
     plugins: [
+      new EnvironmentPlugin(['INIT_DOMAIN']),
       new ProvidePlugin({
         syscon: path.join(__dirname, "./system.config.js")
       }),
